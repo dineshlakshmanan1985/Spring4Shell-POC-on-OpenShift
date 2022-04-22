@@ -13,8 +13,12 @@ Details: https://www.lunasec.io/docs/blog/spring-rce-vulnerabilities
 ## Instructions
 
 1. Clone the repository
-2. Build and run the container: `docker build . -t spring4shell && docker run -p 8080:8080 spring4shell`
-3. App should now be available at http://localhost:8080/helloworld/greeting
+2. oc adm policy add-scc-to-user anyuid -z default -n <target_namespace>
+3. Deploy this using OpenShift from Dockerfile option
+4. While adding Route, append /helloworld/greeting in the path field
+     
+7. Build and run the container: `docker build . -t spring4shell && docker run -p 8080:8080 spring4shell`
+8. App should now be available at http://localhost:8080/helloworld/greeting
 
 ![WebPage](screenshots/webpage.png?raw=true)
 
